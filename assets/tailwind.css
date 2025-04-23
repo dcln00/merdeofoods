@@ -1,0 +1,24 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+	box-sizing: border-box;
+	scroll-behavior: smooth;
+	/* scrollbar-width: thin; */
+}
+
+body {
+	overflow-x: hidden;
+	font-family: "Jost", sans-serif;
+}
+
+@layer base {
+	h1 {
+		@apply text-4xl lg:text-5xl font-medium tracking-tight font-custom lg:leading-[3.7rem] capitalize;
+	}
+
+	h2 {
+		@apply text-xl lg:text-2xl tracking-tight font-custom;
+	}
+}
