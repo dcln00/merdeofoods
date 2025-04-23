@@ -15,7 +15,7 @@ div
 					svgo-logo(class="!w-full !h-full")
 			nav(:class="['ms-auto', {'text-white': route.path === '/'}]")
 				ul(class="flex gap-8 tracking-tight")
-					li(v-for="(item, index) in nav" :key="index" class="capitalize hover:text-brand-green duration-300") #[NuxtLink(:to="item.slug" activeClass='active-link') {{ item.display }}]
+					li(v-for="(item, index) in nav" :key="index" class="capitalize hover:text-brand-green duration-300") #[NuxtLink(:to="item.slug" activeClass='active-link' :class="[{'after:bg-white': route.path === '/'}, {'after:bg-black': route.path !== '/'}]") {{ item.display }}]
 	Transition(name="nav")
 		header(v-if="!isNotScrolled" class="py-4 w-full bg-white/70 backdrop-blur-md hidden lg:block /border-b border-zinc-200 fixed top-0 z-10")
 			.container(class="flex items-center")
@@ -57,7 +57,6 @@ div
 	height: 1px;
 	bottom: -3px;
 	left: 0;
-	background-color: white;
 	transform-origin: bottom right;
 	transition: transform 0.25s ease-out;
 }
