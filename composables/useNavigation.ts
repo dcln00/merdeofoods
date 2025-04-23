@@ -1,24 +1,29 @@
 export const useNavigation = () => {
 	return useState('navigation', () => [
 		{
-			href: '/',
+			slug: '/',
 			name: 'home',
+			display: 'Home',
 		},
 		{
-			href: '/about',
+			slug: '/about',
 			name: 'about',
+			display: 'About',
 		},
 		{
-			href: '/products',
-			name: 'our products',
+			slug: '/products',
+			name: 'products',
+			display: 'Our Products',
 		},
 		{
-			href: '/support',
+			slug: '/support',
 			name: 'support',
+			display: 'Support',
 		},
 		{
-			href: '/shop',
+			slug: '/shop',
 			name: 'shop',
+			display: 'Shop',
 		},
 	])
 }

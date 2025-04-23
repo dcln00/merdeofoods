@@ -16,7 +16,7 @@ div
 				.nav-header(class="flex items-center mb-12")
 					svgo-close(class="text-brand-green ms-auto cursor-pointer text-xl" @click="$emit('toggleShow')")
 				ul(class="*:tracking-tight *:capitalize space-y-4")
-					li(v-for="(item, index) in nav" :key="index") #[NuxtLink(:to="item.href" activeClass='active-link' @click="$emit('toggleShow')") {{ item.name }}]
+					li(v-for="(item, index) in nav" :key="index") #[NuxtLink(:to="item.slug" activeClass='active-link' @click="$emit('toggleShow')") {{ item.display }}]
 </template>
 
 <style scoped>

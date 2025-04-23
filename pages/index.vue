@@ -62,7 +62,7 @@ const toggleHover = (idx: number) => {
 </script>
 
 <template lang="pug">
-section#hero(class="py-24 h-screen")
+section#hero(class="py-20 h-screen")
 	.photo-wrapper(class="absolute top-0 left-0 w-full h-full -z-[1] after:content-[''] after:absolute after:top-0 after:left-0 after:w-full after:h-full after:z-10 after:bg-black/60 overflow-hidden")
 		NuxtImg(src="v1745165997/Merdeo%20Foods/2149894730_l8pbhv.jpg" provider="cloudinary" class="w-full h-full object-cover object-center")
 	.container(class="flex flex-wrap h-full items-center")

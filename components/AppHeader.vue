@@ -15,7 +15,7 @@ div
 					svgo-logo(class="!w-full !h-full")
 			nav(:class="['ms-auto', {'text-white': route.path === '/'}]")
 				ul(class="flex gap-8 tracking-tight")
-					li(v-for="(item, index) in nav" :key="index" class="capitalize hover:text-brand-green duration-300") #[NuxtLink(:to="item.href" activeClass='active-link') {{ item.name }}]
+					li(v-for="(item, index) in nav" :key="index" class="capitalize hover:text-brand-green duration-300") #[NuxtLink(:to="item.slug" activeClass='active-link') {{ item.display }}]
 	Transition(name="nav")
 		header(v-if="!isNotScrolled" class="py-4 w-full bg-white/70 backdrop-blur-md hidden lg:block /border-b border-zinc-200 fixed top-0 z-10")
 			.container(class="flex items-center")
@@ -24,7 +24,7 @@ div
 						svgo-logo(class="!w-full !h-full")
 				nav(class="ms-auto")
 					ul(class="flex gap-8 tracking-tight")
-						li(v-for="(item, index) in nav" :key="index" class="capitalize hover:text-brand-green duration-300") #[NuxtLink(:to="item.href" activeClass='active-dash-link') {{ item.name }}]
+						li(v-for="(item, index) in nav" :key="index" class="capitalize hover:text-brand-green duration-300") #[NuxtLink(:to="item.slug" activeClass='active-dash-link') {{ item.display }}]
 
 	//- mobile header
 	header(class="bg-white w-full block lg:hidden z-40 fixed")
