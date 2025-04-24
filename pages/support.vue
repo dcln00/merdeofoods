@@ -1,6 +1,4 @@
 <script setup lang="ts">
-const { x, y } = useWindowScroll()
-
 useHead({
 	title: 'Support - MerdeoFoods',
 })
@@ -15,12 +13,7 @@ const input = reactive({
 </script>
 
 <template lang="pug">
-section#hero(class="pt-40 pb-24 bg-zinc-100")
-	.container
-		div(class="text-center space-y-4")
-			h1 Support
-			p(class="lg:w-1/2 lg:mx-auto text-zinc-600") Need help with something you didn’t find browsing the website? Reach out to us. Our teams is ready to help!
-			svgo-caret(class="text-2xl rotate-180 mx-auto cursor-pointer hover:translate-y-2 duration-300" @click="() => y = 419.2")
+Hero(title="Support" description="Need help with something you didn’t find browsing the website? Reach out to us. Our teams is ready to help!")
 section#form(class="py-20")
 	.container(class="flex flex-wrap")
 		.details(class="w-full lg:w-4/12 p-4 max-lg:px-0 space-y-8")
