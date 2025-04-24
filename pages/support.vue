@@ -9,7 +9,6 @@ const input = reactive({
 	name: '',
 	email: '',
 	phone: '',
-	subject: '',
 	category: '',
 	message: ''
 })
