@@ -78,13 +78,13 @@ section#process(class="py-20 max-lg:container")
 		h6(class="uppercase tracking-tight text-sm text-brand-green" v-motion-slide-visible-once-bottom) From Soil to Storage:
 		h1(v-motion-slide-visible-once-bottom :delay="200") Our #[span(class="text-brand-green") Careful] #[br] #[span(class="text-brand-green") Curation] Process
 	div(class="flex flex-wrap items-center")
-		div(class="w-full lg:w-1/2 overflow-hidden group aspect-video " v-motion-fade-visible-once)
+		div(class="w-full lg:w-1/2 overflow-hidden group aspect-video" v-motion-fade-visible-once)
 			div(v-for="(list, idx) in process" :key="idx" class="w-full h-full")
 				Transition(name="nav")
 					NuxtImg(v-if="idx === hover" :src="list.photo" provider="cloudinary" class="absolute top-0 left-0 w-full h-full object-cover object-center duration-300 group-hover:scale-105")
 		div(class="w-full lg:w-1/2 p-4 ps-16 max-lg:px-0 space-y-4")
 			ul(class="space-y-12")
-				li(v-for="(list, idx) in process" :key="idx" class="space-y-4 group" v-motion-slide-visible-once-right :delay="100 * idx" @mouseenter="toggleHover(idx)")
+				li(v-for="(list, idx) in process" :key="idx" class="space-y-4 group" v-motion-slide-visible-once-right :delay="100 * idx" @mouseenter="toggleHover(idx)" @click="toggleHover(idx)")
 					h2(class="group-hover:text-brand-green duration-200") {{ idx + 1 }}. {{ list.heading }}
 					p(class="lg:w-3/4 text-zinc-600") {{ list.description }}
 section#delivery(class="py-20 bg-zinc-200")
