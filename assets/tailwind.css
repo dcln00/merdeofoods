@@ -26,3 +26,9 @@ body {
 		@apply text-xl lg:text-2xl tracking-tight font-custom;
 	}
 }
+
+@layer components {
+	.layer-primary {
+		@apply block tracking-tight;
+	}
+}

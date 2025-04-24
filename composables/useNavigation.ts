@@ -21,7 +21,7 @@ export const useNavigation = () => {
 			display: 'Support',
 		},
 		{
-			slug: '/shop',
+			slug: 'https://merdeofoods.odoo.com/shop',
 			name: 'shop',
 			display: 'Shop',
 		},
