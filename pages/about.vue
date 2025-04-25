@@ -80,7 +80,7 @@ section#about-team(class="py-20")
 				.team-details(class="tracking-tight")
 					h2.name {{ team.name }}
 					p.role(class="text-zinc-600") {{ team.role }}
-section#about-gallery(class="py-20")
+section#about-gallery(class="pb-20")
 	.container
 		.heading(class="text-center space-y-2 pb-8 lg:pb-12")
 			h6(class="uppercase tracking-tight text-sm text-brand-green") Gallery
