@@ -8,6 +8,7 @@ export default defineNuxtConfig({
 		'nuxt-svgo',
 		'@vueuse/nuxt',
 		'@vueuse/motion/nuxt',
+		'nuxt-easy-lightbox',
 	],
 	tailwindcss: {
 		viewer: false,
