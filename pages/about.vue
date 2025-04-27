@@ -61,7 +61,7 @@ section#about-hero(class="py-28 lg:py-40 relative")
 	.photo-wrapper(class="absolute top-0 left-0 w-full h-full -z-[1] after:content-[''] after:absolute after:top-0 after:left-0 after:w-full after:h-full after:z-10 after:bg-black/60 overflow-hidden")
 		NuxtImg(src="v1745505522/Merdeo%20Foods/merdeo-about-hero.jpg" provider="cloudinary" class="w-full h-full object-cover object-center")
 	.container
-		h1(class="text-white lg:w-1/2 text-center mx-auto") Building a future-ready agricultural ecosystem in Africa with technology
+		h1(class="text-white lg:w-1/2 text-center mx-auto font-light") Building a future-ready agricultural ecosystem in Africa with technology
 section#about-team(class="py-20")
 	.container
 		.heading(class="text-center space-y-2 pb-8 lg:pb-12")
@@ -88,7 +88,7 @@ section#about-gallery(class="pb-20")
 		div(class="flex flex-wrap")
 			div(v-for="(photo, idx) in gallery" :key="idx" class="w-full lg:w-1/3 p-4 max-lg:px-0 space-y-4")
 				div(class="aspect-video overflow-hidden bg-zinc-300 group relative cursor-pointer" @click="() => showImg(idx)")
-					svgo-eye(class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-10 opacity-0 group-hover:opacity-100 duration-300 text-white text-5xl")
+					svgo-eye(class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-10 opacity-0 group-hover:opacity-100 duration-300 text-white text-3xl")
 					NuxtImg(:src="photo" provider="cloudinary" class="w-full h-full object-cover object-center duration-300 group-hover:scale-105")
 			VueEasyLightbox(:visible="visibleRef" :imgs="gallery.map(x => `https://res.cloudinary.com/dyr6sb7gn/image/upload/f_auto,q_auto,w_1280/${x}`) " :index="indexRef" @hide="onHide" rotateDisabled pinchDisabled loop moveDisabled)
 </template>

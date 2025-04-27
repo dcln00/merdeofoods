@@ -29,41 +29,41 @@ footer(class="w-full py-8 lg:pt-20 bg-black text-white")
 						li
 							NuxtLink(href="#") Company
 						li
-							NuxtLink(href="#") Support
+							NuxtLink(href="/support") Support
 						li
 							NuxtLink(href="#") Join Us
 				div(class="w-1/2 lg:w-2/12 p-4 space-y-8")
 					.title(class="uppercase text-xs tracking-normal") Company
 					ul(class="space-y-2 text-zinc-400")
 						li
-							NuxtLink(href="#") About Us
+							NuxtLink(href="/about") About Us
 						li
 							NuxtLink(href="#") Help Center
+						li
+							NuxtLink(href="/terms") Terms
+						li
+							NuxtLink(href="/privacy-policy") Privacy Policy
 				div(class="w-1/2 lg:w-2/12 p-4 space-y-8")
 					.title(class="uppercase text-xs tracking-normal") Get In Touch
 					ul(class="space-y-2 text-zinc-400")
 						li
 
-							NuxtLink(href="#" class="flex items-center gap-2")
-								svgo-facebook
+							NuxtLink(href="https://web.facebook.com/people/Merdeo-Foods-LTD/61575540562771/" class="flex items-center gap-2")
+								svgo-facebook(class="!mb-0")
 								p Facebook
 						li
-							NuxtLink(href="#" class="flex items-center gap-2")
-								svgo-instagram
+							NuxtLink(href="https://www.instagram.com/merdeofoods/" class="flex items-center gap-2")
+								svgo-instagram(class="!mb-0")
 								p Instagram
 						li
-							NuxtLink(href="#" class="flex items-center gap-2")
-								svgo-x
+							NuxtLink(href="https://x.com/merdeofoodsgh" class="flex items-center gap-2")
+								svgo-x(class="!mb-0")
 								p X
-						li
-							NuxtLink(href="#" class="flex items-center gap-2")
-								svgo-youtube
-								p Youtube
 		div(class="flex")
 			.copyright(class="text-zinc-300 max-lg:text-sm") © 2025 Merdeo Foods, Inc. All rights reserved.
 			.top(@click="() => y = 0" class="ms-auto hidden lg:flex items-center gap-2 cursor-pointer text-zinc-400 hover:text-white duration-200")
 				p Back To Top
-				svgo-caret
+				svgo-caret(class="!mb-0")
 </template>
 
 <style scoped>

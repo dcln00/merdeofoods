@@ -48,5 +48,5 @@ section#form(class="py-20")
 						label.layer-primary(for="message") Message
 						textarea.form-input(id="message" name="message" rows="5" v-model="input.message" placeholder="Enter your message" class="w-full text-sm px-3 py-2 border rounded-md border-gray-300 bg-white text-gray-800 focus:outline-none focus:ring-2 focus:ring-brand-green focus:border-transparent resize-none")
 					div(class="p-4 max-lg:px-0")
-						button(class="bg-brand-green hover:bg-[#155e15] duration-300 text-white px-4 py-2 rounded" type="submit") Join Waitlist
+						button(class="bg-brand-green hover:bg-[#155e15] duration-300 text-white px-4 py-2 rounded" type="submit") Submit
 </template>
