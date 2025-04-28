@@ -17,7 +17,7 @@ definePageMeta({
 	}
 })
 
-const { data: page } = await useAsyncData(`${route.params.slug}`, () => {
+const { data: page, status, error } = await useLazyAsyncData(`${route.params.slug}`, () => {
   return queryCollection('content').path(`/page/${route.params.slug}`).first()
 })
 </script>
@@ -28,5 +28,6 @@ Hero(v-if="route.params.slug === 'privacy-policy'" title="Privacy Policy")
 
 section#content(class="py-20")
 	.container(class="lg:w-2/3")
-		ContentRenderer(:value="page" class="prose max-w-none prose-a:no-underline prose-h2:pb-4 prose-h1:font-normal prose-p:text-zinc-600 prose-strong:text-black prose-headings:text-black")
+		svgo-spinner(class="text-2xl mx-auto" v-if="status === 'pending'")
+		ContentRenderer(v-else :value="page" class="prose max-w-none prose-a:no-underline prose-h2:pb-4 prose-h1:font-normal prose-h1:text-xl prose-p:text-zinc-600 prose-strong:text-black prose-headings:text-black")
 </template>

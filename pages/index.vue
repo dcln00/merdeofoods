@@ -64,7 +64,7 @@ const toggleHover = (idx: number) => {
 <template lang="pug">
 section#hero(class="h-screen relative")
 	.photo-wrapper(class="absolute top-0 left-0 w-full h-full -z-[1] after:content-[''] after:absolute after:top-0 after:left-0 after:w-full after:h-full after:z-10 after:bg-black/60 overflow-hidden")
-		NuxtImg(src="v1745165997/Merdeo%20Foods/2149894730_l8pbhv.jpg" provider="cloudinary" class="w-full h-full object-cover object-center")
+		NuxtImg(src="v1745165997/Merdeo%20Foods/2149894730_l8pbhv.jpg" provider="cloudinary" class="w-full h-full object-cover object-center" placeholder)
 	.container(class="flex flex-wrap h-full items-center")
 		div(class="w-full lg:w-1/2 p-4 max-lg:px-0 space-y-4 text-white")
 			h1(class="font-extrabold" v-motion-slide-visible-once-bottom) #[span(class="text-brand-green") Connecting] Food Businesses to Farm #[span(class="text-brand-green") Fresh Produce]

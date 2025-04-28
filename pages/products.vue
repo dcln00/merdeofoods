@@ -33,7 +33,7 @@ section#hero(class="h-[80vh] lg:h-screen")
 					button(class="bg-brand-green hover:bg-[#155e15] duration-300 text-white px-4 py-2 rounded") Sign Up
 		div(class="w-full lg:w-1/2 p-4 max-lg:px-0 h-full space-y-4 relative flex items-center")
 			.photo-wrapper(class="absolute top-0 left-0 w-full h-full -z-[1] after:content-[''] after:absolute after:top-0 after:left-0 after:w-full after:h-full after:z-10 after:bg-black/60 overflow-hidden")
-				NuxtImg(src="v1745600309/Merdeo%20Foods/merdeo-products.jpg" provider="cloudinary" class="w-full h-full object-cover object-center")
+				NuxtImg(src="v1745600309/Merdeo%20Foods/merdeo-products.jpg" provider="cloudinary" class="w-full h-full object-cover object-center" placeholder)
 			div(class="block lg:hidden px-4 text-white space-y-4")
 				h1(class="font-extrabold") The #[span(class="text-brand-green") Procurement] platform #[span(class="text-brand-green") for food businesses] in africa.
 				p Our platform streamlines your business by helping you process orders, accept payments, and connect directly with suppliers giving you all the tools you need to thrive effortlessly!
