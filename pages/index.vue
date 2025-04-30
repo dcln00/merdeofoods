@@ -73,7 +73,7 @@ section#hero(class="h-screen relative")
 				button(class="bg-brand-green hover:bg-[#155e15] duration-300 text-white px-4 py-2 rounded") Read More
 		//- div(class="w-full lg:w-1/2 p-4 max-lg:px-0 space-y-4")
 			NuxtImg(src="v1745269765/Merdeo%20Foods/2149894684_kgkksi.jpg" provider="cloudinary" class="w-full h-full object-cover object-center" v-motion-fade-visible-once)
-section#process(class="py-20 max-lg:container")
+section#process(class="py-20 max-lg:container overflow-x-hidden")
 	.heading(class="text-center space-y-2 pb-8 lg:pb-12")
 		h6(class="uppercase tracking-tight text-sm text-brand-green" v-motion-slide-visible-once-bottom) From Soil to Storage:
 		h1(v-motion-slide-visible-once-bottom :delay="200") Our #[span(class="text-brand-green") Careful] #[br] #[span(class="text-brand-green") Curation] Process

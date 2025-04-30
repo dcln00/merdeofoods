@@ -25,5 +25,10 @@ export const useNavigation = () => {
 			name: 'shop',
 			display: 'Shop',
 		},
+		{
+			slug: '/auth/login',
+			name: 'login',
+			display: 'Login',
+		},
 	])
 }

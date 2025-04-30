@@ -8,12 +8,7 @@
 	/* scrollbar-width: thin; */
 }
 
-html {
-	overflow-x: hidden;
-}
-
 body {
-	overflow-x: hidden;
 	font-family: "Jost", sans-serif;
 }
 
