@@ -17,7 +17,7 @@ div
 					svgo-close(class="text-brand-green ms-auto cursor-pointer text-xl" @click="$emit('toggleShow')")
 				ul(class="*:tracking-tight *:capitalize space-y-4")
 					li(v-for="(item, index) in nav" :key="index") #[NuxtLink(:to="item.slug" activeClass='active-link' @click="$emit('toggleShow')") {{ item.display }}]
-			div
+			div(@click="$emit('toggleShow')")
 				NuxtLink(to="/auth/register")
 					button(class="bg-brand-green hover:bg-[#155e15] duration-300 text-white px-4 py-2 rounded w-full") Get Started
 </template>
