@@ -13,9 +13,9 @@ div
 			NuxtLink(to="/")
 				.logo(class="w-[100px] h-[40px]")
 					svgo-logo(class="!w-full !h-full")
-			nav(:class="['ms-auto', {'text-white': route.path === '/'}]")
+			nav(:class="['ms-auto', {'text-white/': route.path === '/'}]")
 				ul(class="flex gap-8 tracking-tight")
-					li(v-for="(item, index) in nav" :key="index" class="capitalize hover:text-brand-green duration-300") #[NuxtLink(:to="item.slug" activeClass='active-link' :class="[{'after:bg-white': route.path === '/'}, {'after:bg-black': route.path !== '/'}]") {{ item.display }}]
+					li(v-for="(item, index) in nav" :key="index" class="capitalize hover:text-brand-green duration-300") #[NuxtLink(:to="item.slug" activeClass='active-link' :class="[{'after:bg-black': route.path === '/'}, {'after:bg-black': route.path !== '/'}]") {{ item.display }}]
 			div(class="ms-8")
 				NuxtLink(to="/auth/register")
 					button(class="bg-brand-green hover:bg-[#155e15] duration-300 text-white px-4 py-2 rounded") Get Started

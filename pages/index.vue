@@ -62,17 +62,23 @@ const toggleHover = (idx: number) => {
 </script>
 
 <template lang="pug">
-section#hero(class="h-screen relative")
-	.photo-wrapper(class="absolute top-0 left-0 w-full h-full -z-[1] after:content-[''] after:absolute after:top-0 after:left-0 after:w-full after:h-full after:z-10 after:bg-black/60 overflow-hidden")
+section#hero(class="py-20 lg:py-52 bg-zinc-200 overflow-hidden")
+	//- .photo-wrapper(class="absolute top-0 left-0 w-full h-full -z-[1] after:content-[''] after:absolute after:top-0 after:left-0 after:w-full after:h-full after:z-10 after:bg-black/60 overflow-hidden")
 		NuxtImg(src="v1745165997/Merdeo%20Foods/2149894730_l8pbhv.jpg" provider="cloudinary" class="w-full h-full object-cover object-center" placeholder)
-	.container(class="flex flex-wrap h-full items-center")
-		div(class="w-full lg:w-1/2 p-4 max-lg:px-0 space-y-4 text-white")
+	.container(class="flex flex-wrap items-center")
+		div(class="w-full lg:w-1/2 p-4 max-lg:px-0 space-y-4 text-white/")
 			h1(class="font-extrabold" v-motion-slide-visible-once-bottom) #[span(class="text-brand-green") Connecting] Food Businesses to Farm #[span(class="text-brand-green") Fresh Produce]
 			p(v-motion-slide-visible-once-bottom :delay="200") At Merdeo Foods, we bridge the gap between Africa's hardworking smallholder farmers and food businesses that demand quality ingredients. Our end-to-end solution ensures every tomato, pepper, and leafy green reaches your kitchen at peak freshness.
 			div(v-motion-slide-visible-once-bottom :delay="400")
 				button(class="bg-brand-green hover:bg-[#155e15] duration-300 text-white px-4 py-2 rounded") Read More
-		//- div(class="w-full lg:w-1/2 p-4 max-lg:px-0 space-y-4")
-			NuxtImg(src="v1745269765/Merdeo%20Foods/2149894684_kgkksi.jpg" provider="cloudinary" class="w-full h-full object-cover object-center" v-motion-fade-visible-once)
+		div(class="w-full lg:w-1/2 max-lg:pt-12 max-lg:px-0 relative")
+			.anchor(class="mx-auto relative lg:w-[350px] h-[225px] lg:h-[350px] bg-red-500/")
+				div(v-motion-slide-visible-once-bottom :delay="600" :duration="1000")
+					div(class="animate-float")
+						NuxtImg(src="v1746200558/Merdeo%20Foods/merdomac-dashboard.png" provider="cloudinary" class="absolute lg:-top-20 -left-4 lg:-left-8 scale-[1.2] lg:scale-[3.1] origin-top-left pointer-events-none")
+				div(v-motion-slide-visible-once-bottom :delay="800" :duration="1000")
+					div(class="animate-float [animation-delay:0.5s]")
+						NuxtImg(src="v1746200558/Merdeo%20Foods/merdeo-mockup.png" provider="cloudinary" class="absolute top-14 lg:-top-6 -left-4 lg:-left-28 scale-[0.23] lg:scale-[0.75] origin-top-left pointer-events-none")
 section#process(class="py-20 max-lg:container overflow-x-hidden")
 	.heading(class="text-center space-y-2 pb-8 lg:pb-12")
 		h6(class="uppercase tracking-tight text-sm text-brand-green" v-motion-slide-visible-once-bottom) From Soil to Storage:
