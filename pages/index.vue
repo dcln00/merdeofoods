@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import { SvgoWaste, SvgoFarming, SvgoCommunity, SvgoSustainability } from '#components'
+
 const process = [
 	{
 		heading: 'Farm Selection',
@@ -35,6 +37,33 @@ const delivery = [
 		heading: 'Flexible Ordering',
 		description: 'Schedule daily, weekly, or seasonal deliveries through our easy-to-use platform',
 		photo: 'v1745264759/Merdeo%20Foods/merdeo-2_m534kt.jpg',
+	},
+]
+
+const impact = [
+	{
+		icon: SvgoWaste,
+		heading: 'Zero Waste',
+		highlight: '3+ tons of food spoilage prevented monthly',
+		description: 'We are committed to reducing food waste in our supply chain and our system prevents over 3 tons of food spoilage every month.',
+	},
+	{
+		icon: SvgoFarming,
+		heading: 'Empowering Farmers',
+		highlight: 'prices reduction by 5% for farmers',
+		description: 'By cutting out middlemen, we ensure that farmers receive fair prices for their produce. This empowers them to invest in their farms and communities.',
+	},
+	{
+		icon: SvgoSustainability,
+		heading: 'Sustainable Practices',
+		highlight: 'Promoting eco-friendly farming',
+		description: 'We prioritize sustainable farming practices that protect the environment and promote biodiversity.',
+	},
+	{
+		icon: SvgoCommunity,
+		heading: 'Community Support',
+		highlight: 'Investing in 30+ local communities',
+		description: 'We invest in local communities by supporting education, healthcare, and infrastructure projects.',
 	},
 ]
 
@@ -105,6 +134,20 @@ section#delivery(class="py-20 bg-zinc-200")
 					div(class="space-y-2")
 						h2(class="text-white text-xl") {{ list.heading }}
 						p(class="text-white text-sm") {{ list.description }}
+section#impact(class="pt-20 pb-8")
+	.container
+		.heading(class="text-center space-y-2 pb-8 lg:pb-12" v-motion-slide-visible-once-bottom)
+			h1 Our #[span(class="text-brand-green") Impact]
+		div(class="flex flex-wrap")
+			div(v-for="(item, idx) in impact" :key="idx" class="w-full lg:w-1/2 p-4 max-lg:px-0" v-motion-fade-visible-once :delay="100 * idx")
+				div(class="p-4 bg-zinc-50 rounded space-y-4 group hover:scale-[1.04] duration-300")
+					div(class="flex items-center gap-4")
+						.icon(class="size-16 p-1")
+							component(:is="item.icon" class="!w-full !h-full")
+						.details
+							h2(class="text-xl group-hover:text-brand-green duration-300") {{ item.heading }}
+							p(class="tracking-tight text-zinc-700") {{ item.highlight }}
+					p(class="text-zinc-600") {{ item.description }}
 section#why(class="py-20")
 	.container
 		.heading(class="text-center space-y-2 pb-8 lg:pb-12")
