@@ -4,6 +4,7 @@ defineProps({
 	tagline: String,
 	input: Object,
 	disabled: Boolean,
+	loading: Boolean,
 })
 
 const passwordBind = {
@@ -15,7 +16,7 @@ const route = useRoute()
 </script>
 
 <template lang="pug">
-div(class="flex flex-col m-4 p-6 rounded-md sm:p-10 bg-white/ text-gray-800")
+div(class="flex flex-col w-full lg:m-4 p-6 sm:p-10 bg-white/")
 	div(class="mb-8 text-center")
 		NuxtLink(to="/" class="inline-block")
 			.logo(class="w-[150px] h-[80px] overflow-hidden mx-auto")
@@ -40,7 +41,7 @@ div(class="flex flex-col m-4 p-6 rounded-md sm:p-10 bg-white/ text-gray-800")
 			//- EMAIL
 			div
 				label(for="email" class="block mb-2 text-sm") Email address
-				input(required :disabled="disabled" v-model="input.email" type="email" name="email" id="email" autocomplete="off" :placeholder="route.path === '/auth/login' ? 'name@domain.com' : 'enter an email'" class="peer w-full px-3 py-2 border rounded-md border-gray-300 bg-gray-100 text-gray-800 focus:outline-none focus:ring-2 focus:ring-brand-green focus:border-transparent [&:not(:placeholder-shown):not(:focus):invalid]:text-red-600 [&:not(:placeholder-shown):not(:focus):invalid]:border-red-600" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$")
+				input(required :disabled="disabled" v-model="input.email" type="email" name="email" id="email" autocomplete="off" placeholder="name@domain.com" class="peer w-full px-3 py-2 border rounded-md border-gray-300 bg-gray-100 text-gray-800 focus:outline-none focus:ring-2 focus:ring-brand-green focus:border-transparent [&:not(:placeholder-shown):not(:focus):invalid]:text-red-600 [&:not(:placeholder-shown):not(:focus):invalid]:border-red-600" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$")
 				p(class="mt-2 hidden peer-[&:not(:placeholder-shown):not(:focus):invalid]:block text-red-600 text-sm") please provide a valid email address
 			//- PASSWORD
 			div
@@ -48,18 +49,22 @@ div(class="flex flex-col m-4 p-6 rounded-md sm:p-10 bg-white/ text-gray-800")
 					label(for="password" class="text-sm") Password
 					a(rel="noopener noreferrer" href="#" class="text-xs hover:underline text-brand-accent") Forgot password?
 				label(v-if="route.path === '/auth/register'" for="email" class="block mb-2 text-sm") Password
-				input(required :disabled="disabled" v-model="input.password" type="password" name="password" id="password" :placeholder="route.path === '/auth/login' ? '**********' : '**********'" :class="`peer w-full px-3 py-2 border rounded-md border-gray-300 bg-gray-100 text-gray-800 focus:outline-none focus:ring-2 focus:ring-brand-green focus:border-transparent ${route.path === '/auth/register' && '[&:not(:placeholder-shown):not(:focus):invalid]:text-red-600 [&:not(:placeholder-shown):not(:focus):invalid]:border-red-600'}`" v-bind="route.path === '/auth/register' && passwordBind")
+				input(required :disabled="disabled" v-model="input.password" type="password" name="password" id="password" placeholder="**********" :class="`peer w-full px-3 py-2 border rounded-md border-gray-300 bg-gray-100 text-gray-800 focus:outline-none focus:ring-2 focus:ring-brand-green focus:border-transparent ${route.path === '/auth/register' && '[&:not(:placeholder-shown):not(:focus):invalid]:text-red-600 [&:not(:placeholder-shown):not(:focus):invalid]:border-red-600'}`" v-bind="route.path === '/auth/register' && passwordBind")
 				p(v-if="route.path === '/auth/register'" class="mt-2 hidden peer-[&:not(:placeholder-shown):not(:focus):invalid]:block text-red-600 text-sm") your password must be at least 7 characters long
 			//- VERIFY PASSWORD
 			div(v-if="route.path === '/auth/register'")
 				label(for="email" class="block mb-2 text-sm") Confirm Password
-				input(required :disabled="disabled" v-model="input.verifyPassword" type="password" name="password" id="password" :placeholder="route.path === '/auth/login' ? '**********' : '**********'" :class="`peer w-full px-3 py-2 border rounded-md border-gray-300 bg-gray-100 text-gray-800 focus:outline-none focus:ring-2 focus:ring-brand-green focus:border-transparent ${route.path === '/auth/register' && '[&:not(:placeholder-shown):not(:focus):invalid]:text-red-600 [&:not(:placeholder-shown):not(:focus):invalid]:border-red-600'}`")
+				input(required :disabled="disabled" v-model="input.verifyPassword" type="password" name="password" id="password" placeholder="**********" :class="`peer w-full px-3 py-2 border rounded-md border-gray-300 bg-gray-100 text-gray-800 focus:outline-none focus:ring-2 focus:ring-brand-green focus:border-transparent ${route.path === '/auth/register' && '[&:not(:placeholder-shown):not(:focus):invalid]:text-red-600 [&:not(:placeholder-shown):not(:focus):invalid]:border-red-600'}`")
 				p(v-if="(route.path === '/auth/register') && (input.password !== input.verifyPassword)" class="mt-2 text-red-600 text-sm") passwords do not match
 		//- SUBMIT
 		div(class="space-y-4")
 			div
-				button(v-if="route.path === '/auth/login'" type="submit" class="w-full px-8 py-3 rounded-md bg-brand-green hover:bg-[#155e15] text-gray-50 group-invalid:pointer-events-none group-invalid:opacity-30") Sign in
-				button(v-if="route.path === '/auth/register'" type="submit" class="w-full px-8 py-3 rounded-md bg-brand-green hover:bg-[#155e15] text-gray-50 group-invalid:pointer-events-none group-invalid:opacity-30") Register
+				button(v-if="route.path === '/auth/login'" type="submit" class="w-full px-8 py-3 rounded-md bg-brand-green hover:bg-[#155e15] text-gray-50 group-invalid:pointer-events-none group-invalid:opacity-30")
+					svgo-spinner(v-if="loading" class="mx-auto")
+					p(v-else) Sign in
+				button(v-if="route.path === '/auth/register'" type="submit" class="w-full h-12 px-8 py-3 rounded-md bg-brand-green hover:bg-[#155e15] text-gray-50 group-invalid:pointer-events-none group-invalid:opacity-30")
+					svgo-spinner(v-if="loading" class="mx-auto")
+					p(v-else) Register
 			//- p(v-if="route.path === '/auth/register'" class="text-xs text-center text-gray-600") By proceeding, you agree to the #[NuxtLink(to="/privacy-policy" class="hover:underline text-brand-accent") Privacy] and #[NuxtLink(to="/terms" class="hover:underline text-brand-accent") Terms and conditions].
 			p(v-if="route.path === '/auth/login'" class="px-6 text-sm text-center text-gray-600") Don't have an account yet? 
 				NuxtLink(to="/auth/register" rel="noopener noreferrer" class="hover:underline text-brand-accent") Register
