@@ -26,4 +26,8 @@ body {
 	.layer-primary {
 		@apply block tracking-tight;
 	}
+
+	.btn {
+		@apply bg-brand-green hover:bg-[#155e15] duration-300 text-sm text-white px-6 py-2 rounded;
+	}
 }

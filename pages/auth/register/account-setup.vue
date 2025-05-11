@@ -5,7 +5,7 @@ useHead({
 
 definePageMeta({
 	middleware: [async () => {
-		const input = useState<{ email: string; password: string }>('input')
+		const input = useState<{ email: string; password: string }>('register')
 
 		if(!input.value) return navigateTo('/auth/register')
 		

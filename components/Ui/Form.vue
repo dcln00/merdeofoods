@@ -59,7 +59,7 @@ div(class="flex flex-col w-full lg:m-4 p-6 sm:p-10 bg-white/")
 		//- SUBMIT
 		div(class="space-y-4")
 			div
-				button(v-if="route.path === '/auth/login'" type="submit" class="w-full px-8 py-3 rounded-md bg-brand-green hover:bg-[#155e15] text-gray-50 group-invalid:pointer-events-none group-invalid:opacity-30")
+				button(v-if="route.path === '/auth/login'" type="submit" class="w-full h-12 px-8 py-3 rounded-md bg-brand-green hover:bg-[#155e15] text-gray-50 group-invalid:pointer-events-none group-invalid:opacity-30")
 					svgo-spinner(v-if="loading" class="mx-auto")
 					p(v-else) Sign in
 				button(v-if="route.path === '/auth/register'" type="submit" class="w-full h-12 px-8 py-3 rounded-md bg-brand-green hover:bg-[#155e15] text-gray-50 group-invalid:pointer-events-none group-invalid:opacity-30")

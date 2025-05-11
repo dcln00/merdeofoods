@@ -16,8 +16,6 @@ useSeoMeta({
 	twitterDescription: 'Accelerating digital financial services for smallholder farmers in Africa',
 	twitterCard: 'summary_large_image',
 })
-
-
 </script>
 
 <template lang="pug">

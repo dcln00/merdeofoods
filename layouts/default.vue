@@ -16,9 +16,9 @@ const toggleShow = () => {
 
 <template lang="pug">
 .body-outlet(class="flex flex-col min-h-screen")
-	AppHeader(@toggle-show="toggleShow")
+	app-header(@toggle-show="toggleShow")
 	Navigation(:show="show" @toggle-show="toggleShow")
 	main(class="lg:grow")
 		slot
-	AppFooter
+	app-footer
 </template>

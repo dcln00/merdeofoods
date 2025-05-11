@@ -3,7 +3,7 @@ useHead({
 	title: 'Register - MerdeoFoods',
 })
 
-const input = useState('input', () => ({
+const input = useState('register', () => ({
 	email: '',
 	password: '',
 	verifyPassword: '',

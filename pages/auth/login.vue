@@ -7,14 +7,29 @@ definePageMeta({
   layout: false,
 })
 
-const input = reactive({
+const input = useState('login', () => ({
 	email: '',
 	password: '',
-})
+}))
+
+const isLoading = ref(false)
+const disabled = ref(false)
 
 const signInWithOAuth = async () => {}
 
-const login = async () => {}
+const login = async () => {
+	try {
+		if(!input.value.email || !input.value.password ) return
+		isLoading.value = true
+		disabled.value = true
+		await navigateTo('/dashboard')
+	} catch(e) {
+		console.error(e)
+	} finally {
+		isLoading.value = false
+		disabled.value = false
+	}
+}
 </script>
 
 <template lang="pug">
@@ -41,5 +56,5 @@ section#login(class="py-0 lg:py-8/")
 					svgo-auth-yellow(class="absolute -bottom-[30%] -left-[15%] !w-full !h-full -z-[1]" filled)
 					svgo-auth-green(class="absolute -top-[30%] -right-[30%] !w-full !h-full -z-[1]" filled)
 			div(class="col-span-full lg:col-span-1 flex items-center")
-				ui-form(heading="Welcome back!" tagline="Log in to your account by completing the form below" :input="input" @handle-submit="login" @google-auth="signInWithOAuth")
+				ui-form(heading="Welcome back!" tagline="Log in to your account by completing the form below" :input="input" @handle-submit="login" @google-auth="signInWithOAuth" :loading="isLoading" :disabled="disabled")
 </template>

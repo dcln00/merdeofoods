@@ -10,6 +10,7 @@ export default defineNuxtConfig({
 		'@vueuse/nuxt',
 		'@vueuse/motion/nuxt',
 		'nuxt-easy-lightbox',
+		'@nuxtjs/device',
 	],
 	tailwindcss: {
 		viewer: false,
