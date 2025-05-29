@@ -3,270 +3,139 @@ useHead({
 	title: 'Dashboard - MerdeoFoods',
 })
 
-definePageMeta({
-	middleware: [async () => {
-		const input = useState<{ email: string; password: string }>('login')
-
-		if(!input.value) return navigateTo('/auth/login')
-		
-		if (input.value.email !== 'test@example.com' && input.value.password !== 'Testing123') return navigateTo('/auth/login')
-	}]
-})
-
-// MODAL OPTIONS
-const roleModalOpen = ref(false)
-const branchModalOpen = ref(false)
-const userModalOpen = ref(false)
-
-const toggleRoleModal = () => {
-	roleModalOpen.value = !roleModalOpen.value
-}
-
-const toggleBranchModal = () => {
-	branchModalOpen.value = !branchModalOpen.value
-}
-
-const toggleUserModal = () => {
-	userModalOpen.value = !userModalOpen.value
-}
-
-const roleName = ref('')
-const branchName = ref('')
-const userName = reactive({
-	name: '',
-	email: '',
-	branch: '',
-	role: '',
-})
-
-
-const roles = ref([
+const actions = ref([
 	{
 		id: 1,
-		name: 'Admin',
-		permissions: [{
-			id: 1,
-			name: 'Inventory',
-			value: 'inventory',
-			checked: true,
-		}, {
-			id: 2,
-			name: 'Commerce',
-			value: 'commerce',
-			checked: false,
-		}, {
-			id: 3,
-			name: 'Order Approval',
-			value: 'order',
-			checked: false,
-		}, {
-			id: 4,
-			name: 'Dashboard',
-			value: 'dashboard',
-			checked: false,
-		}, {
-			id: 5,
-			name: 'Account Creation',
-			value: 'account',
-			checked: false,
-		}],
-	}
-])
-
-const branches = ref(['Osu High Street', 'Amasaman'])
-
-
-const handleAddRole = async () => {
-	try {
-		if(!roleName.value) return
-
-		roles.value.push({
-			id: roles.value.length + 1,
-			name: roleName.value || 'New Role',
-			permissions: [{
-				id: 1,
-				name: 'Inventory',
-				value: 'inventory',
-				checked: false,
-			}, {
-				id: 2,
-				name: 'Commerce',
-				value: 'commerce',
-				checked: false,
-			}, {
-				id: 3,
-				name: 'Order Approval',
-				value: 'order',
-				checked: false,
-			}, {
-				id: 4,
-				name: 'Dashboard',
-				value: 'dashboard',
-				checked: false,
-			}, {
-				id: 5,
-				name: 'Account Creation',
-				value: 'account',
-				checked: false,
-			}],
-		})
-
-		toggleRoleModal()
-	} finally {
-		roleName.value = ''
-	}
-}
-
-const handleAddBranch = async () => {
-	try {
-		if(!branchName.value) return
-
-		branches.value.push(branchName.value || 'New Branch')
-
-		toggleBranchModal()
-	} finally {
-		branchName.value = ''
-	}
-}
-
-const handleRemoveRole = async (idx: number) => {
-	const confirm = window.confirm('Are you sure you want to delete this role?')
-	if (confirm) {
-		roles.value = roles.value.filter((role) => role.id !== idx)
-	}
-}
-
-const handleRemoveBranch = async (idx: number) => {
-	const confirm = window.confirm('Are you sure you want to delete this branch?')
-	if (confirm) {
-		branches.value = branches.value.filter((branch) => branch !== idx)
-	}
-}
-
-const handleEditRole = async (idx: number) => {
-	const roleName = prompt('Enter new role name')
-	if (roleName) {
-		roles.value[idx].name = roleName
-	}
-}
-
-const handleEditBranch = async (idx: number) => {
-	const branchName = prompt('Enter new branch name')
-	if (branchName) {
-		branches.value[idx] = branchName
-	}
-}
-
-const users = ref([
-	{
-		id: 1,
-		name: 'John Doe',
-		email: 'name@domain.com',
 		branch: 'Osu High Street',
-		role: 'Admin',
+		date: 'DD/MM/YYYY',
+		total: '1200',
+		requester: 'Solomon Agyeman',
 	},
 	{
 		id: 2,
-		name: 'Jane Doe',
-		email: '',
 		branch: 'Amasaman',
-		role: 'Admin',
+		date: 'DD/MM/YYYY',
+		total: '1500',
+		requester: 'Kwame Agyeman',
 	},
 ])
 
-const handleAddUser = async () => {
-	try {
-		if(!userName.name || !userName.email || !userName.branch || !userName.role) return
+const data = [
+  { month: 'January', sales: 6000},
+  { month: 'February', sales: 4000},
+  { month: 'March', sales: 12000},
+  { month: 'April', sales: 8000},
+  { month: 'May', sales: 10000},
+  { month: 'June', sales: 7000},
+  { month: 'July', sales: 12000},
+]
 
-		users.value.push({
-			id: users.value.length + 1,
-			name: userName.name,
-			email: userName.email,
-			branch: userName.branch,
-			role: userName.role,
-		})
+const categories = {
+  sales: {
+    name: 'Sales',
+    color: '#218921',
+  },
 
-		toggleUserModal()
-	} finally {
-		userName.name = ''
-		userName.email = ''
-		userName.branch = ''
-		userName.role = ''
-	}
 }
 
-const handleRemoveUser = async (idx: number) => {
-	const confirm = window.confirm('Are you sure you want to delete this user?')
-	if (confirm) {
-		users.value = users.value.filter((user) => user.id !== idx)
-	}
-}
+const xFormatter = (i: number) => data[i].month
 </script>
 
 <template lang="pug">
 section#dashboard-title(class="pt-12 pb-8")
 	.container
-		h1(class="text-2xl") Account
-section#permissions(class="pb-16")
-	dashboard-modal(:open="roleModalOpen" title="Add Role" @close-modal="toggleRoleModal")
-		template(#content)
-			dashboard-modal-form(@submit="handleAddRole" v-model:name="roleName" label="Role Name" placeholder="Enter role. eg. Admin")
+		h1(class="text-2xl") Dashboard
+section#statistics(class="pb-16")
 	.container
-		.heading(class="flex items-center mb-6")
-			h2(class="text-xl text-zinc-600") Roles & Permissions
-			button.btn(class="ms-auto" @click="toggleRoleModal") Add Role
-		.roles(class="space-y-6")
-			.role(v-for="(role, idx) in roles" :key="idx" class="relative bg-zinc-200 p-6 rounded-md")
-				.settings(class="absolute bottom-6 right-4 flex items-center gap-4 *:cursor-pointer")
-					svgo-dashboard-edit(@click="handleEditRole(idx)")
-					svgo-dashboard-delete(filled @click="handleRemoveRole(role.id)")
-				div(class="space-y-4")
-					.title(class="text-lg font-medium tracking-tight") {{ role.name }}
-					ul(class="flex gap-4")
-						li(v-for="(permission, index) in role.permissions" :key="index" class="space-x-2")
-							input(type="checkbox" :id="permission.value" :value="permission.value" :checked="permission.checked")
-							label(for="admin") {{ permission.name }}
-section#branches(class="pb-20")
-	dashboard-modal(:open="branchModalOpen" title="Add Branch" @close-modal="toggleBranchModal")
-		template(#content)
-			dashboard-modal-form(@submit="handleAddBranch" v-model:name="branchName" label="Branch Name" placeholder="Enter branch. eg. Cantonments")
+		div(class="grid grid-cols-3 gap-6 items-start text-white")
+			div(class="bg-neutral-700 col-span-full lg:col-span-1 p-8 space-y-2 rounded-md")
+				p Branches
+				h1 4
+			div(class="bg-brand-green col-span-full lg:col-span-1 p-8 space-y-2 rounded-md")
+				p Total Orders
+				h1 200
+			div(class="bg-brand-accent col-span-full lg:col-span-1 p-8 space-y-2 rounded-md")
+				p Users
+				h1 12
+section#chart(class="pb-16")
 	.container
-		.heading(class="flex items-center mb-6")
-			h2(class="text-xl text-zinc-600") Branches
-			button.btn(class="ms-auto" @click="toggleBranchModal") Add Branch
-		.branches(class="space-y-6")
-			.branch(v-for="(branch, idx) in branches" :key="idx" class="relative bg-zinc-200 p-6 rounded-md")
-				.settings(class="absolute bottom-6 right-4 flex items-center gap-4 *:cursor-pointer")
-					svgo-dashboard-edit(@click="handleEditBranch(idx)")
-					svgo-dashboard-delete(filled @click="handleRemoveBranch(branch)")
-				div(class="space-y-4")
-					.title(class="text-lg font-medium tracking-tight") {{ branch }}
-section#users(class="pb-20")
-	dashboard-modal(:open="userModalOpen" title="Add User" @close-modal="toggleUserModal")
-		template(#content)
-			//- HERE
-			dashboard-modal-form(@submit="handleAddUser" v-model:name="userName.name" v-model:email="userName.email" v-model:branch="userName.branch" v-model:role="userName.role" label="First Name Last Name" placeholder="Enter user. eg. John Doe" :user="true" :branches="branches" :roles="roles")
+		AreaChart(
+				:data="data"
+				:categories="categories"
+				:height="300"
+				:xFormatter="xFormatter"
+				:x-grid-line="true"
+				:y-grid-line="true"
+				:hide-legend="true"
+			)
+section#frequency(class="pb-16")
 	.container
-		.heading(class="flex items-center mb-6")
-			h2(class="text-xl text-zinc-600") Users
-			button.btn(class="ms-auto" @click="toggleUserModal") Add User
+		div(class="grid grid-cols-2 gap-6 items-start text-white")
+			div(class="border-2 border-zinc-300 col-span-full lg:col-span-1 p-8 space-y-4 text-black rounded-md")
+				h2(class="text-xl text-zinc-600") Restock Frequency
+				div(class="space-y-2")
+					div(class="flex items-center")
+						p(class="whitespace-nowrap pr-4") Tomatoes
+						hr(class="w-full border border-zinc-300")
+						p(class="whitespace-nowrap ps-4 text-green-700") 10 days
+					div(class="flex items-center")
+						p(class="whitespace-nowrap pr-4") Lettuce
+						hr(class="w-full border border-zinc-300")
+						p(class="whitespace-nowrap ps-4 text-green-700") 7 days
+					div(class="flex items-center")
+						p(class="whitespace-nowrap pr-4") Rice
+						hr(class="w-full border border-zinc-300")
+						p(class="whitespace-nowrap ps-4 text-red-700") 30 days
+					div(class="flex items-center")
+						p(class="whitespace-nowrap pr-4") Bananas
+						hr(class="w-full border border-zinc-300")
+						p(class="whitespace-nowrap ps-4 text-green-700") 7 days
+					div(class="flex items-center")
+						p(class="whitespace-nowrap pr-4") Oranges
+						hr(class="w-full border border-zinc-300")
+						p(class="whitespace-nowrap ps-4 text-yellow-700") 12 days
+			div(class="border-2 border-zinc-300 col-span-full lg:col-span-1 p-8 space-y-4 text-black rounded-md")
+				h2(class="text-xl text-zinc-600") Order Frequency
+				div(class="space-y-2")
+					div(class="flex items-center")
+						p(class="whitespace-nowrap pr-4") Osu High Street
+						hr(class="w-full border border-zinc-300")
+						p(class="whitespace-nowrap ps-4 text-green-700") 10 days
+					div(class="flex items-center")
+						p(class="whitespace-nowrap pr-4") Amasaman
+						hr(class="w-full border border-zinc-300")
+						p(class="whitespace-nowrap ps-4 text-green-700") 7 days
+					div(class="flex items-center")
+						p(class="whitespace-nowrap pr-4") Madina
+						hr(class="w-full border border-zinc-300")
+						p(class="whitespace-nowrap ps-4 text-red-700") 30 days
+					div(class="flex items-center")
+						p(class="whitespace-nowrap pr-4") Kwashieman
+						hr(class="w-full border border-zinc-300")
+						p(class="whitespace-nowrap ps-4 text-green-700") 7 days
+					div(class="flex items-center")
+						p(class="whitespace-nowrap pr-4") East Legon
+						hr(class="w-full border border-zinc-300")
+						p(class="whitespace-nowrap ps-4 text-yellow-700") 12 days
+section#actions(class="pb-20")
+	.container
+		.heading(class="mb-6")
+			h2(class="text-xl text-zinc-600") Pending Actions
 		table(class="min-w-full table-fixed")
 			thead
 				tr(class="bg-gray-200 *:font-medium")
-					th(class="w-3/12 p-4 text-left") Name
-					th(class="w-2/12 p-4 text-left") Email
-					th(class="w-2/12 p-4 text-left") Branch
-					th(class="w-1/12 p-4 text-left") Role
-					th(class="w-2/12 p-4 text-left") Actions
-					th(class="w-2/12 p-4 text-left") -
+					th(class="w-4/12 px-4 py-3 text-left") Branch
+					th(class="w-2/12 px-4 py-3 text-left") Total in GHS
+					th(class="w-2/12 px-4 py-3 text-left") Requester
+					th(class="w-2/12 px-4 py-3 text-left") Actions
+					th(class="w-2/12 px-4 py-3 text-left")
 			tbody
-				tr(v-for="(user, idx) in users" :key="idx" class="even:bg-gray-100")
-					td(class="p-4") {{ user.name }}
-					td(class="p-4") {{ user.email }}
-					td(class="p-4") {{ user.branch }}
-					td(class="p-4") {{ user.role }}
+				tr(v-for="(action, idx) in actions" :key="idx" class="even:bg-gray-100")
+					td(class="p-4") {{ action.branch }}
+					td(class="p-4") {{ action.total }}
+					td(class="p-4") {{ action.requester }}
 					td(class="p-4") 
-						button.btn(class="w-full bg-neutral-800 hover:bg-neutral-900" @click="") Reset Password
+						button.btn(class="w-full bg-neutral-800 hover:bg-neutral-900" @click="") View Details
 					td(class="p-4") 
-						button.btn(class="w-full bg-red-600 hover:bg-red-800" @click="handleRemoveUser(user.id)") Delete
+						button.btn(class="w-full" @click="") Approve
 </template>

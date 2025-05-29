@@ -42,6 +42,7 @@ const submit = async () => {
 		nextStep()
 	} else {
 		isLoading.value = true
+		await navigateTo('/dashboard')
 		alert('Form Submitted. Navigating to dashboard...')
 	}
 	} finally {

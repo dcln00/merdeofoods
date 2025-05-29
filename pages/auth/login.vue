@@ -8,8 +8,8 @@ definePageMeta({
 })
 
 const input = useState('login', () => ({
-	email: '',
-	password: '',
+	email: 'test@example.com',
+	password: 'Testing123',
 }))
 
 const isLoading = ref(false)

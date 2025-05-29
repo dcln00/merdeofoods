@@ -11,6 +11,7 @@ export default defineNuxtConfig({
 		'@vueuse/motion/nuxt',
 		'nuxt-easy-lightbox',
 		'@nuxtjs/device',
+		'nuxt-charts',
 	],
 	tailwindcss: {
 		viewer: false,
