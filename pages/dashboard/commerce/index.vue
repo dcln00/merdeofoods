@@ -19,30 +19,36 @@ const { data: products, status, error } = await useAsyncData(`products`, () => {
 </script>
 
 <template lang="pug">
-section#cards(class="pt-12 pb-12")
+section#cards(class="pt-16 pb-12")
 	.container
 		div(class="grid grid-cols-2 gap-6 text-white")
-			div(class="bg-brand-green col-span-full p-8 py-16 text-white rounded-md")
-				div(class="flex flex-wrap")
+			div(class="bg-brand-green col-span-full p-8 py-16 text-white rounded-md relative")
+				div(class="flex flex-wrap items-center")
 					div(class="w-full lg:w-1/2 p-4 max-lg:px-0 space-y-4")
 						h1(class="text-4xl") Farm-fresh produce, #[br] Conveniently Delivered
 						button.btn(class="bg-brand-accent hover:bg-[#a38729] duration-300 text-black") Start Shopping
-			div(class="bg-[#1c1c1c] col-span-full lg:col-span-1 p-8 rounded-md")
-				div(class="flex flex-wrap")
+					div(class="absolute right-0 bottom-0 w-full lg:w-1/2 pointer-events-none")
+						NuxtImg(src="v1750517771/Merdeo%20Foods/DSC_5004_2_Background_Removed_1.png" provider="cloudinary" class="w-full h-full object-cover scale-[0.85] origin-bottom")
+			div(class="bg-[#1c1c1c] col-span-full lg:col-span-1 p-8 py-4 rounded-md")
+				div(class="flex flex-wrap items-center")
 					div(class="w-full lg:w-1/2 p-4 max-lg:px-0 space-y-2")
 						h1(class="text-4xl") 50%
 						p(class="capitalize") off vegetables this month only
-			div(class="bg-[#1c1c1c] col-span-full lg:col-span-1 p-8 rounded-md")
-				div(class="flex flex-wrap")
-						div(class="w-full lg:w-1/2 p-4 max-lg:px-0 space-y-2")
-							h1(class="text-4xl") 48hr
-							p(class="capitalize") deliveries within Accra
+					div(class="w-full lg:w-1/2 p-4 h-[168px] max-lg:px-0")
+						NuxtImg(src="v1750517774/Merdeo%20Foods/Groceries_preview_1.png" provider="cloudinary" class="w-full h-full object-contain")
+			div(class="bg-[#1c1c1c] col-span-full lg:col-span-1 p-8 py-4 rounded-md")
+				div(class="flex flex-wrap items-center")
+					div(class="w-full lg:w-1/2 p-4 max-lg:px-0 space-y-2")
+						h1(class="text-4xl") 48hr
+						p(class="capitalize") deliveries within Accra
+					div(class="w-full lg:w-1/2 p-4 h-[168px] max-lg:px-0 space-y-2")
+						NuxtImg(src="v1750517772/Merdeo%20Foods/Fast_Delivery_Concept_1.png" provider="cloudinary" class="w-full h-full object-contain")
 section#categories(class="pb-20")
 	.container
 		.heading(class="mb-6")
 			h2(class="text-xl capitalize") product categories
 		div(class="grid grid-cols-2 lg:grid-cols-6 gap-6")
-			div(v-for="(category, idx) in categories" :key="idx" class="bg-zinc-100 col-span-1 py-8 px-4 rounded-md space-y-4")
+			div(v-for="(category, idx) in categories" :key="idx" class="bg-zinc-100 col-span-1 py-8 px-4 rounded-md space-y-4 hover:outline hover:outline-2 hover:outline-brand-green")
 				.photo(class="size-32 mx-auto pointer-events-none")
 					NuxtImg(:src="category.photo" class="w-full h-full object-contain object-center")
 				p(class="text-center capitalize") {{ category.name }}
@@ -66,4 +72,6 @@ section#products(class="pb-20")
 				div
 					NuxtLink(:to="`commerce/${item.slug}`")
 						button.btn(class="w-full bg-neutral-800 hover:bg-neutral-900") Add to Cart
+		div(class="py-16")
+			button.btn(class="duration-300 text-white block mx-auto capitalize") Show more
 </template>

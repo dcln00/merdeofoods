@@ -1,5 +1,5 @@
 <script setup lang="ts">
-const { $lenis } = useNuxtApp()
+const { $lenis } = useNuxtApp() as any
 
 const show = ref(false)
 
